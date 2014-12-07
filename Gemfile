@@ -14,8 +14,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 group :development, :test do
-  gem 'pry'
+  # gem 'pry'
+  gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'hirb'
 end
 
 group :test do
@@ -37,6 +39,10 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+gem 'active_model_serializers'
+
+gem 'rest-client'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

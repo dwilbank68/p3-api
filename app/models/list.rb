@@ -21,4 +21,5 @@ class List < ActiveRecord::Base
       false
     end
   end
+
 end

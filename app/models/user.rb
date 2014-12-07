@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :items, through: :lists
 
   validates_presence_of :password, :username
+  validates_uniqueness_of :password, :username
 
   def authenticate?(pass)
     password == pass
