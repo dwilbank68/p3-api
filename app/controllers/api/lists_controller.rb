@@ -4,8 +4,13 @@ class Api::ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
+  #curl -i -X GET http://localhost:3000/api/users/7/lists/6?password=fifthpassword
   def show
-    @items = @list.items.completed
+    if params[:password] == @user.password
+      render json: @list.items
+    else
+      render nothing: true, status: 401
+    end
   end
 
   def edit
@@ -13,7 +18,6 @@ class Api::ListsController < ApplicationController
 
   #curl -i -X GET http://localhost:3000/api/users/7/lists?password=fifthpassword
   def index
-    # render json: params
     if params[:password] == @user.password
       lists = @user.lists
       render json: lists
@@ -24,7 +28,6 @@ class Api::ListsController < ApplicationController
 
   # curl -i -X POST -d 'name=frog%20duties' http://localhost:3000/api/users/7/lists?password=fifthpassword
   def create
-    # render json: params
     if params[:password] == @user.password
       list = List.new(list_params)
       list.user_id = @user.id

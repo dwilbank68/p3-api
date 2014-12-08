@@ -22,13 +22,8 @@ Todo::Application.routes.draw do
 
   namespace :api do
     resources :lists, only: [] do
-      resources :items, only: [:create, :new]
+      resources :items, only: [:create, :destroy]
     end
   end
-
-  namespace :api do
-    resources :items, only: [:destroy]
-  end
-
 
 end
